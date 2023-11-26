@@ -3,13 +3,6 @@ header {
 	background-image: url("../../assets/static_images/header.png");
 }
 
-.flex {
-	display: flex;
-	justify-content: start;
-	align-items: center;
-	gap: 10px;
-}
-
 .header-content {
 	color: white;
 	width: 400px;
@@ -26,7 +19,7 @@ header {
 	margin-bottom: -15px;
 }
 
-button {
+.header-content-button {
 	background-color: var(--rose-800);
 	border: none;
 	outline: none;
@@ -45,7 +38,7 @@ button {
 	transition: background-color 0.2s ease-in-out;
 }
 
-button:hover {
+.header-content-button:hover {
 	background-color: var(--rose-900);
 }
 

@@ -1,3 +1,26 @@
 .App {
 	font-family: "Inter";
 }
+
+main {
+	padding: 20px;
+}
+
+.featured-movies-wrapper {
+	display: flex;
+	justify-content: space-between; /* Keeps the arrows at the edges */
+	align-items: center; /* Aligns the arrows with the centered images */
+}
+
+.movies-featured {
+	display: flex;
+	gap: 20px;
+	overflow: auto;
+	flex-wrap: nowrap;
+}
+
+.arrow_button {
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+}
