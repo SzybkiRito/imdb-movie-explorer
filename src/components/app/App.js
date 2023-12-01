@@ -41,7 +41,7 @@ function App() {
 			<div className="App">
 				<Header />
 				<main>
-					<h3 className="inter-2xl">Featured Movie</h3>
+					<h3 className="inter-2xl">Popular Movies</h3>
 					<div className="featured-movies-wrapper">
 						<button
 							className="arrow_button"

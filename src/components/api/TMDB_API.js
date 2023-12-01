@@ -5,7 +5,7 @@ class TMDB_API {
 	static API_TOKEN = process.env.REACT_APP_API_TOKEN_TMDB_API_KEY;
 	static API_IMAGE_PATH = "https://image.tmdb.org/t/p/w500/";
 	static apiUtils = new API_UTILS(TMDB_API.API_URL, TMDB_API.API_TOKEN);
-	static genreIdsAndNames = this.getGenreNames();
+	static genreIdsAndNames = this.#getGenreNames();
 
 	static async getPopularMovies() {
 		const popularMovies = await TMDB_API.apiUtils.get("movie/popular");
@@ -26,7 +26,7 @@ class TMDB_API {
 		return movies;
 	}
 
-	static async getGenreNames() {
+	static async #getGenreNames() {
 		const genreNames = await TMDB_API.apiUtils.get(
 			"genre/movie/list?language=en"
 		);
