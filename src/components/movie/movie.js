@@ -1,14 +1,23 @@
 import MovieRating from "../movieRating/movieRating";
 import "./movie.css";
 
-function Movie() {
+function Movie(props) {
 	return (
-		<div className="card">
-			<img src="https://via.placeholder.com/250x370" alt="Movie Poster" />
-			<p className="inter-sm origin">USA, 2016 - Current</p>
-			<p className="inter-sm movie-title">Stranger Things</p>
-			<MovieRating />
-			<p className="inter-sm genre">Action, Adventure, Horror</p>
+		<div className="card" data-testid={`movie_${props.movie.id}`}>
+			<img
+				src={props.movie.imageUrl}
+				alt={props.movie.title}
+				width="250"
+				height="370"
+			/>
+			<p className="inter-sm origin">{props.movie.releaseYear}</p>
+			<p className="inter-sm movie-title">{props.movie.title}</p>
+			<MovieRating movie={props.movie} />
+			<p className="inter-sm genre">
+				{props.movie.genreNames?.map((genreName) => {
+					return `${genreName} `;
+				})}
+			</p>
 		</div>
 	);
 }

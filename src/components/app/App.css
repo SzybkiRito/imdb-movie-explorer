@@ -8,14 +8,15 @@ main {
 
 .featured-movies-wrapper {
 	display: flex;
-	justify-content: space-between; /* Keeps the arrows at the edges */
-	align-items: center; /* Aligns the arrows with the centered images */
+	justify-content: space-between;
+	align-items: center;
 }
 
 .movies-featured {
 	display: flex;
 	gap: 20px;
-	overflow: auto;
+	overflow-x: hidden;
+	scroll-behavior: smooth;
 	flex-wrap: nowrap;
 }
 
