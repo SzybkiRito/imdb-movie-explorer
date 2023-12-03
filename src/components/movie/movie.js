@@ -3,10 +3,10 @@ import "./movie.css";
 
 function Movie(props) {
 	return (
-		<div className="card">
+		<div className="card" data-testid={`movie_${props.movie.id}`}>
 			<img
 				src={props.movie.imageUrl}
-				alt="Movie Poster"
+				alt={props.movie.title}
 				width="250"
 				height="370"
 			/>
