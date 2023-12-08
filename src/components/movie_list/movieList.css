@@ -1,0 +1,19 @@
+.featured-movies-wrapper {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.movies-featured {
+	display: flex;
+	gap: 20px;
+	overflow-x: hidden;
+	scroll-behavior: smooth;
+	flex-wrap: nowrap;
+}
+
+.arrow_button {
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+}

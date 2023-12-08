@@ -3,7 +3,13 @@ import "./movie.css";
 
 function Movie(props) {
 	return (
-		<div className="card" data-testid={`movie_${props.movie.id}`}>
+		<div
+			className="card"
+			data-testid={`movie_${props.movie.id}`}
+			onClick={() => {
+				props.onClick(props.movie);
+			}}
+		>
 			<img
 				src={props.movie.imageUrl}
 				alt={props.movie.title}

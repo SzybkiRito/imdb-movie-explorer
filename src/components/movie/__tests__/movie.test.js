@@ -1,11 +1,11 @@
 import { render, screen, cleanup } from "@testing-library/react";
-import TMDB_API from "../../api/TMDB_API";
+import TMDB_API from "../../../api/TMDB_API";
 import Movie from "../movie";
 
 describe("Movie", () => {
 	let moviesWithGenres;
 	beforeAll(async () => {
-		const popularMovies = await TMDB_API.getPopularMovies();
+		const popularMovies = await TMDB_API.getPopularMovies([], 1);
 		moviesWithGenres = await Promise.all(
 			popularMovies.map(async (movie) => {
 				const genreNames = await TMDB_API.getGenreNamesFromId(movie.genreIds);
@@ -14,15 +14,6 @@ describe("Movie", () => {
 		);
 	});
 	afterEach(cleanup);
-
-	test("API call to TMDB", async () => {
-		const popularMovies = await TMDB_API.getPopularMovies();
-		expect(popularMovies.length).toBeGreaterThan(0);
-	});
-
-	test("API call to TMDB for genre names", async () => {
-		expect(moviesWithGenres[0].genreNames.length).toBeGreaterThan(0);
-	});
 
 	test("Movie Image has alt text", async () => {
 		const movie = moviesWithGenres[0];

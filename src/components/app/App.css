@@ -2,26 +2,59 @@
 	font-family: "Inter";
 }
 
+.popup--wrapper {
+	position: fixed;
+	top: 40%;
+	left: 35%;
+	height: 100vh;
+}
+
 main {
 	padding: 20px;
 }
 
-.featured-movies-wrapper {
+.wrapper {
 	display: flex;
-	justify-content: space-between;
+	flex-direction: column;
+	justify-content: center;
 	align-items: center;
+	height: 40vh;
 }
 
-.movies-featured {
-	display: flex;
-	gap: 20px;
-	overflow-x: hidden;
-	scroll-behavior: smooth;
-	flex-wrap: nowrap;
+.loader {
+	border: 8px solid #f3f3f3; /* Light grey */
+	border-top: 8px solid var(--red-900); /* Blue */
+	border-radius: 50%;
+	width: 60px;
+	height: 60px;
+	animation: spin 2s linear infinite;
 }
 
-.arrow_button {
-	background-color: transparent;
-	border: none;
-	cursor: pointer;
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.popup--poster {
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.popup-inner--content {
+	z-index: 1;
+	height: 300px;
+	margin-left: 10px;
+	overflow: auto;
+}
+
+.popup-inner--content::-webkit-scrollbar {
+	display: none;
+}
+
+h4 {
+	margin: 0;
 }

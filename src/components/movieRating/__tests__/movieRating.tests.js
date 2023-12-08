@@ -1,11 +1,11 @@
 import { render, screen, cleanup } from "@testing-library/react";
-import TMDB_API from "../../api/TMDB_API";
+import TMDB_API from "../../../api/TMDB_API";
 import MovieRating from "../movieRating";
 
 describe("MovieRating", () => {
 	let movies;
 	beforeAll(async () => {
-		movies = await TMDB_API.getPopularMovies();
+		movies = await TMDB_API.getPopularMovies([], 1);
 	});
 	afterEach(cleanup);
 
