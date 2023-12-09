@@ -3,7 +3,7 @@ import API_UTILS from "./API_UTILS";
 class TMDB_API {
 	static API_URL = "https://api.themoviedb.org/3/";
 	static API_TOKEN = process.env.REACT_APP_API_TOKEN_TMDB_API_KEY;
-	static API_IMAGE_PATH = "https://image.tmdb.org/t/p/w500/";
+	static API_IMAGE_PATH = "https://image.tmdb.org/t/p/original/";
 	static apiUtils = new API_UTILS(TMDB_API.API_URL, TMDB_API.API_TOKEN);
 	static genreIdsAndNames = this.#getGenreNames();
 
@@ -61,6 +61,11 @@ class TMDB_API {
 		return movies;
 	}
 
+	/**
+	 * @param {Array} currentMovies // The current actors array
+	 * @param {Number} page // The page number to fetch
+	 * @returns {Array} // Returns an array of actors
+	 */
 	static async getPopularActors(page, currentActors) {
 		const popularActors = await TMDB_API.apiUtils.get(
 			`person/popular?page=${page}`
@@ -105,6 +110,36 @@ class TMDB_API {
 		}
 
 		return genreNamesList;
+	}
+
+	/**
+	 * @param {Number} movieId // The movie id to get the movie details from
+	 * @returns {String} // Returns a youtube trailer link
+	 */
+	static async getYoutubeTrailerLink(movieId) {
+		try {
+			const youtubeTrailerLink = await TMDB_API.apiUtils.get(
+				`movie/${movieId}/videos`
+			);
+			return `https://www.youtube.com/watch?v=${youtubeTrailerLink.results[0].key}`;
+		} catch (error) {
+			console.log(error);
+		}
+	}
+
+	static async getMostTrendingMovie() {
+		try {
+			const trendingMovie = await TMDB_API.apiUtils.get(`trending/movie/day`);
+			return {
+				id: trendingMovie.results[0].id,
+				imageUrl: `${TMDB_API.API_IMAGE_PATH}${trendingMovie.results[0].backdrop_path}`,
+				title: trendingMovie.results[0].title,
+				overview: trendingMovie.results[0].overview,
+				rating: trendingMovie.results[0].vote_average,
+			};
+		} catch (error) {
+			console.log(error);
+		}
 	}
 }
 

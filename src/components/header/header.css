@@ -1,6 +1,5 @@
 header {
 	height: 100%;
-	background-image: url("../../assets/static_images/header.png");
 }
 
 .header-content {
@@ -17,29 +16,7 @@ header {
 
 .header-content h2 {
 	margin-bottom: -15px;
-}
-
-.header-content-button {
-	background-color: var(--rose-800);
-	border: none;
-	outline: none;
-	cursor: pointer;
-	text-transform: uppercase;
-	color: white;
-	width: 250px;
-	border-radius: 6px;
-	padding: 10px 20px;
-	text-align: center;
-
-	background-image: url("../../assets/icons/play.svg");
-	background-repeat: no-repeat;
-	background-position: 10px center;
-	background-size: 25px;
-	transition: background-color 0.2s ease-in-out;
-}
-
-.header-content-button:hover {
-	background-color: var(--rose-900);
+	margin-left: -10px;
 }
 
 @media screen and (max-width: 768px) {

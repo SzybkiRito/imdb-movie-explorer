@@ -7,6 +7,7 @@ import TMDB_API from "../../api/TMDB_API";
 import MovieList from "../movie_list/moveList";
 import ActorCard from "../actor_card/actord_card";
 import Popup from "../popup/popup";
+import IconButton from "../iconButton/iconButton";
 
 function App() {
 	const currentPopularMoviesPage = useRef(1);
@@ -93,6 +94,15 @@ function App() {
 							})}
 						</p>
 						<p className="inter-sm text-content">{clickedMovie.overview}</p>
+						<IconButton
+							type="small"
+							text="Watch Trailer"
+							onClick={() => {
+								TMDB_API.getYoutubeTrailerLink(clickedMovie.id).then((link) => {
+									window.open(link, "_blank");
+								});
+							}}
+						/>
 					</div>
 				</Popup>
 			</div>

@@ -1,22 +1,46 @@
 import "./header.css";
 import Navigation from "../navigation/navigation";
 import MovieRating from "../movieRating/movieRating";
+import { useEffect, useState } from "react";
+import TMDB_API from "../../api/TMDB_API";
+import IconButton from "../iconButton/iconButton";
 
 function Header() {
+	const [movie, setMovie] = useState({});
+
+	const fetchMostPopularMovie = async () => {
+		const mostPopularMovies = await TMDB_API.getMostTrendingMovie();
+		setMovie(mostPopularMovies);
+	};
+
+	const followYoutubeTrailerLink = async () => {
+		const youtubeTrailerLink = await TMDB_API.getYoutubeTrailerLink(movie.id);
+		window.open(youtubeTrailerLink, "_blank");
+	};
+
+	useEffect(() => {
+		fetchMostPopularMovie();
+	}, []);
+
 	return (
-		<header>
+		<header
+			style={{
+				backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie.imageUrl})`,
+				backgroundRepeat: "no-repeat",
+				backgroundSize: "cover",
+			}}
+		>
 			<Navigation />
 			<div className="header-content">
-				<h2 className="inter-6xl">John Wick: 3 Parebellum</h2>
-				<MovieRating />
-				<span>
-					John Wick is on the run after killing a member of the international
-					assassins' guild, and with a $14 million price tag on his head, he is
-					the target of hit men and women everywhere.
-				</span>
-				<button className="header-content-button">
-					<span className="inter-lg">Watch Trailer</span>
-				</button>
+				<h2 className="inter-6xl">{movie.title}</h2>
+				<MovieRating movie={movie} />
+				<span>{movie.overview}</span>
+				<IconButton
+					text="Watch Trailer"
+					icon="play.svg"
+					onClick={() => followYoutubeTrailerLink()}
+					type="big"
+				/>
 			</div>
 		</header>
 	);
